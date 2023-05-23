@@ -2,11 +2,15 @@ require('dotenv').config();
 const express = require('express');
 const mongoose = require('mongoose');
 const UserModel = require('./models/user.model');
-const Router = require('express').Router;
+const Router = express.Router();
 const userRouter = require('./routes/user.routes');
+const gifRouter = require('./routes/gif.routes');
 const cors = require('cors');
 const helmet = require('helmet');
 const morgan = require('morgan');
+const { auth } = require('express-oauth2-jwt-bearer');
+const jwt = require('express-jwt');
+const jwks = require('jwks-rsa');
 
 
 const app = express();
@@ -15,10 +19,28 @@ mongoose.connect(process.env.DATABASE_URL, { useNewUrlParser: true, useUnifiedTo
   .then(() => console.log('Connected to MongoDB'))
   .catch(err => console.error('Could not connect to MongoDB...', err));
 
+  const checkJwt = auth({
+    audience: 'https://dev-sb6ntunibpcdilyy.eu.auth0.com/api/v2/',
+    issuerBaseURL: `https://dev-sb6ntunibpcdilyy.eu.auth0.com/`,
+  });
+
+// const verifyJwt = jwt({
+//   secret: jwks.expressJwtSecret({
+//     cache: true,
+//     rateLimit: true,
+//     jwksRequestsPerMinute: 5,
+//     jwksUri: 'https://dev-sb6ntunibpcdilyy.eu.auth0.com/.well-known/jwks.json'
+//   }),
+//   audience: "https://apiAuth/v1",
+//   issuer: "https://dev-sb6ntunibpcdilyy.eu.auth0.com/",
+//   algorithms: ["RS256"]
+// })
+
+app.use(express.json());
 app.use(cors());
 app.use(helmet());
 app.use(morgan('dev'));
-app.use(express.json());
+
 // app.use(
 //     fileUpload({
 //       useTempFiles: true,
@@ -28,7 +50,11 @@ app.use(express.json());
 //     })
 //   );
 
-app.use('/users', userRouter);
+app.use("/gifs", gifRouter);
+
+app.use('/users', checkJwt, userRouter);
 
 const port = process.env.PORT;
 app.listen(port, () => console.log(`Listening on port ${port}...`));
+
+
