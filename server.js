@@ -9,7 +9,7 @@ const cors = require('cors');
 const helmet = require('helmet');
 const morgan = require('morgan');
 const { auth } = require('express-oauth2-jwt-bearer');
-const jwks = require('jwks-rsa');
+
 
 
 const app = express();
@@ -19,8 +19,8 @@ mongoose.connect(process.env.DATABASE_URL, { useNewUrlParser: true, useUnifiedTo
   .catch(err => console.error('Could not connect to MongoDB...', err));
 
   const checkJwt = auth({
-    audience: 'https://dev-sb6ntunibpcdilyy.eu.auth0.com/api/v2/',
-    issuerBaseURL: `https://dev-sb6ntunibpcdilyy.eu.auth0.com/`,
+    audience: process.env.AUTH_AUDIENCE,
+    issuerBaseURL: process.env.AUTH_INNERBASE_URL,
   });
 
 

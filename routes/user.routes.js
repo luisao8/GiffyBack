@@ -2,7 +2,7 @@ const express = require('express');
 const { auth } = require('express-oauth2-jwt-bearer');
 // const jwksRsa = require('jwks-rsa');
 const Router = require('express').Router;
-const { uploadGIF, logoutUser, likeGIF, getUploaded, getLiked } = require('../controllers/user.controller');
+const { uploadGIF, logoutUser, likeGIF, getUploaded, getLiked, registerUser } = require('../controllers/user.controller');
 const { UserModel } = require('../models/user.model.js');
 
 
@@ -51,6 +51,7 @@ const userRouter = Router();
 
 userRouter
   .post("/getLiked", getLiked)
+  .post("/register", registerUser)
   .post("/getUploaded", getUploaded)
   .post("/upload", uploadGIF)
   .post("/like", likeGIF)
