@@ -7,10 +7,11 @@ const { getGifs } = require('../controllers/gifs.controller');
 
 
 
+
 const gifRouter = Router();
 
 gifRouter
-  .get("/allGIFS", getGifs)
+  .get("/getGifs", getGifs)
   
 
 

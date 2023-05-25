@@ -9,7 +9,6 @@ const cors = require('cors');
 const helmet = require('helmet');
 const morgan = require('morgan');
 const { auth } = require('express-oauth2-jwt-bearer');
-const jwt = require('express-jwt');
 const jwks = require('jwks-rsa');
 
 
@@ -24,17 +23,7 @@ mongoose.connect(process.env.DATABASE_URL, { useNewUrlParser: true, useUnifiedTo
     issuerBaseURL: `https://dev-sb6ntunibpcdilyy.eu.auth0.com/`,
   });
 
-// const verifyJwt = jwt({
-//   secret: jwks.expressJwtSecret({
-//     cache: true,
-//     rateLimit: true,
-//     jwksRequestsPerMinute: 5,
-//     jwksUri: 'https://dev-sb6ntunibpcdilyy.eu.auth0.com/.well-known/jwks.json'
-//   }),
-//   audience: "https://apiAuth/v1",
-//   issuer: "https://dev-sb6ntunibpcdilyy.eu.auth0.com/",
-//   algorithms: ["RS256"]
-// })
+
 
 app.use(express.json());
 app.use(cors());
