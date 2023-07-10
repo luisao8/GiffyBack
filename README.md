@@ -57,6 +57,5 @@ Contributions, issues, and feature requests are welcome! Feel free to check the 
 ## Contact Information
 If you have any questions, issues or you need assistance, feel free to contact us at:
 
-* [Email](mailto:)
-* [Twitter](https://twitter.com/username)
-* [LinkedIn](https://www.linkedin.com/in/username)
+* [Email](mailto:luisalarconriva@gmail.com)
+* [LinkedIn](https://www.linkedin.com/in/luis-alarc%C3%B3n-de-la-lastra-810113122/)
