@@ -14,7 +14,7 @@
 ---
 
 ## Project Description
-This repository houses the backend codebase for Giffy, a GIF browser, and library web application. The server-side functionalities allow users to browse, like, and upload GIFs.
+This repository houses the backend codebase for Giffy, a GIF browser, and library web application. The server-side functionalities allow users to browse, like, and upload GIFs. It was created as part of a three day challenge to create a GIPH webapp.
 
 ---
 
