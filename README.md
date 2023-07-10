@@ -50,7 +50,7 @@ You should see output indicating that the server is running and listening on the
 ---
 
 ## Contributions
-Contributions, issues, and feature requests are welcome! Feel free to check the [issues page](#).
+Contributions, issues, and feature requests are welcome!
 
 ---
 
